@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://stage2.gd" type="Script" id=1]
+[ext_resource path="res://enemies/enemy1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://map_stage_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SceneChanger.tscn" type="PackedScene" id=6]
+
+
+[node name="Stage2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 260.849, 130.885 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 133.186, 137.009 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 480.38, 87.5896 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 680, 118 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 40, 138 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.5, 0.5 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 176.187, 92.6875 )
+scale = Vector2( 0.639017, 0.578355 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GroundTileset" parent="." instance=ExtResource( 5 )]
+
+[node name="SceneChanger" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 138 )
+target_stage = "res://stage1.tscn"
+entrance_name = "right"

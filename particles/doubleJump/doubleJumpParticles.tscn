@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://particles/doubleJump/jump_part.png" type="Texture" id=1]
+[ext_resource path="res://particles/doubleJump/doubleJumpParticles.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 8.57
+flag_disable_z = true
+spread = 95.19
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 31.23
+scale = 0.7
+scale_random = 0.37
+color = Color( 0.427451, 0.447059, 0.458824, 0.807843 )
+hue_variation_random = 1.0
+
+[node name="Node2D" type="Particles2D"]
+position = Vector2( -0.0669708, -0.133945 )
+emitting = false
+amount = 10
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.43
+randomness = 0.13
+visibility_rect = Rect2( -5.59687, -5.58538, 11.2274, 23.1294 )
+local_coords = false
+process_material = SubResource( 3 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
