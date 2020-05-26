@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends Area2D
 
 const TYPE = "enemy"
 const SPEED = 15
-const GRAVITY = 15
+const GRAVITY = 0.2
 const JUMP_POWER = -250
 const FLOOR = Vector2(0, -1)
 
@@ -13,8 +13,7 @@ var direction = 1
 var is_dead = false
 
 func _ready():
-	pass
-	
+	velocity.y = GRAVITY
 	
 func dmg():
 	hp -= 1
@@ -36,12 +35,30 @@ func dead():
 func _physics_process(delta):
 	if !is_dead:
 		velocity.x = SPEED * direction
-		velocity.y = GRAVITY
 		$AnimationPlayer.play("go")
-		velocity = move_and_slide(velocity, FLOOR)
-	
-		if is_on_wall() || $RayCast2D.is_colliding() == false:
-			$Sprite.flip_h = !($Sprite.flip_h)
-			direction *= -1
-			$RayCast2D.position.x *= -1
 		
+		for body in get_overlapping_bodies():
+			if body.has_method("sub_health") and PlayerGlobals.current_state != PlayerGlobals.STATE.DEAD:
+				body.sub_health(1)
+		velocity.x = SPEED * delta * direction
+		translate(velocity)
+
+		# Change direction when on the edge of the platform
+		if !$floorCast.is_colliding():
+			changeDirection()
+		
+		# Change direction after hitting a wall
+		if $wallCast.is_colliding():
+			if $wallCast.get_collider().name == "TileMap":
+				changeDirection()
+				
+func changeDirection():
+	$Sprite.flip_h = !($Sprite.flip_h)
+	direction *= -1
+	$wallCast.position.x *= -1
+	$floorCast.position.x *= -1
+	
+func _on_Enemy_body_entered(body):
+	if body.name == "TileMap":
+		velocity.y = 0
+		translate(velocity)

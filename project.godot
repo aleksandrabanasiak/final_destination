@@ -19,6 +19,11 @@ config/name="idk"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MainGlobals="*res://globals/mainGlobals.gd"
+PlayerGlobals="*res://globals/playerGlobals.gd"
+
 [display]
 
 window/size/width=320
