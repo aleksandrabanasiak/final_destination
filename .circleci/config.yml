@@ -46,4 +46,12 @@ jobs:
       - run:
           name: Upload Linux build
           command: ./butler push linux squiggly-fox/final-destination:linux
+      - run:
+          name: Export Mac OS build
+          command: |
+              mkdir -p mac
+              ./godot --export mac project.godot "mac/Final_Destination.dmg"
+      - run:
+          name: Upload Mac OS build
+          command: ./butler push mac squiggly-fox/final-destination:macos
 
