@@ -20,7 +20,7 @@ func dmg():
 	$Sprite.texture = preload("res://assets/enemy1_dmg.png")
 	yield(get_tree().create_timer(0.1),"timeout")
 	$Sprite.texture = preload("res://assets/enemy1.png")
-	if hp == 0:
+	if hp <= 0:
 		dead()
 func dead():
 	$CollisionShape2D.set_deferred("disabled", true)
