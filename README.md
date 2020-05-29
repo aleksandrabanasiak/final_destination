@@ -32,7 +32,7 @@ You can download the dev builds here: [itch.io link](https://squiggly-fox.itch.i
   - [ ] Display current weapon
 - Stages
   - [x] Stage changing with persistent player state
-  - [ ] Death barrier below the stage
+  - [x] Death barrier below the stage
   - [ ] Smoother scene transition
   - [ ] Multiple stages/areas to test different features
 - Misc.
@@ -45,8 +45,8 @@ _* May be dropped from the prototype's scope_
 
 ## Known issues
 **Please refer to this list before you submit a new bug report!**
-- Framerate breaks player's movement physics
-- One of the stage_1 enemies can somehow become immortal 
+- ~Framerate breaks player's movement physics~
+- ~One of the stage_1 enemies can somehow become immortal~
 - Enemies don't always detect edge of the platform correctly (thus they are walking in the air sometimes)
 - You can experience some camera jittering (especially in the Linux build); it's a known 
 [Godot's problem](https://docs.godotengine.org/en/stable/tutorials/misc/jitter_stutter.html). It will be investigated
