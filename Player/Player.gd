@@ -6,14 +6,14 @@ const FIREBALL = preload("res://Player/bullet/bullet.tscn")
 const P = preload("res://particles/doubleJump/doubleJumpParticles.tscn")
 
 var knockback_on = -1
-var velocity = Vector2()
+var velocity = Vector2.ZERO
 var on_ground = false
 var is_invincible = false
 
 func _ready():
 	self.position = self.get_parent().player_position
 
-func _process(_delta):
+func _process(delta):
 	if pg.current_state != pg.STATE.DEAD:
 		# Recover from knockback
 		if pg.current_state == pg.STATE.KNOCKBACK and velocity.y == 0:
@@ -50,7 +50,10 @@ func _process(_delta):
 			$Sprite.frame = 5
 			velocity.y = pg.JUMP_POWER
 			on_ground = false
-		
+		if Input.is_action_just_released("ui_up"):
+			if velocity.y < pg.JUMP_POWER:
+				velocity.y = pg.JUMP_POWER
+				
 		if Input.is_action_just_pressed("ui_accept"):
 			$anim.play("attack")
 			var fireball = FIREBALL.instance()
@@ -59,7 +62,7 @@ func _process(_delta):
 			fireball.position = $Position2D.global_position
 			
 		# Move the character
-		velocity.y += pg.GRAVITY
+		velocity += pg.GRAVITY * delta
 		
 		if is_on_floor():
 			pg.already_jumped = false

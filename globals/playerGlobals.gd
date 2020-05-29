@@ -6,8 +6,8 @@ var health = 3
 
 # Movement-related values
 const SPEED = 100
-const GRAVITY = 15
-const JUMP_POWER = -280
+const GRAVITY = Vector2(0, 1200)
+const JUMP_POWER = -380
 const FLOOR = Vector2(0, -1)
 
 # Sprites
