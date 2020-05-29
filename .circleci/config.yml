@@ -49,9 +49,9 @@ jobs:
       - run:
           name: Export Mac OS build
           command: |
-              mkdir -p mac
-              ./godot --export mac project.godot "mac/Final_Destination.dmg"
+              ./godot --export mac project.godot "Final_Destination"
+              mv Final_Destination Final_Destination.zip
       - run:
           name: Upload Mac OS build
-          command: ./butler push mac squiggly-fox/final-destination:macos
+          command: ./butler push Final_Destination.zip squiggly-fox/final-destination:macos
 
