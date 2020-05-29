@@ -50,9 +50,9 @@ func _process(delta):
 			$Sprite.frame = 5
 			velocity.y = pg.JUMP_POWER
 			on_ground = false
-		if Input.is_action_just_released("ui_up"):
-			if velocity.y < pg.JUMP_POWER:
-				velocity.y = pg.JUMP_POWER
+			
+		if Input.is_action_just_released("restart"):
+			die(0)
 				
 		if Input.is_action_just_pressed("ui_accept"):
 			$anim.play("attack")
@@ -85,10 +85,13 @@ func sub_health(dmg):
 		if pg.health - dmg >= 0:
 			pg.health -= dmg
 		else:
-			pg.current_state = pg.STATE.DEAD
-			$anim.play("die")
-			$deadTimer.start(2)
+			die(2)
 		
+func die(timeout):
+	pg.current_state = pg.STATE.DEAD
+	$anim.play("die")
+	$deadTimer.start(timeout)
+	
 func knockback():
 	is_invincible = true
 	# Start invincibility timer
