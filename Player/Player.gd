@@ -40,16 +40,16 @@ func _process(delta):
 				if on_ground:
 					$anim.play("idle")
 			
-		if Input.is_action_just_pressed("ui_up") and (on_ground or can_double_jump()):
-			var p = P.instance()
-			p.position = self.position
-			p.emitting = true
-			self.get_parent().add_child(p)
-			pg.already_jumped = true
-			$anim.play("jump")
-			$Sprite.frame = 5
-			velocity.y = pg.JUMP_POWER
-			on_ground = false
+			if Input.is_action_just_pressed("ui_up") and (on_ground or can_double_jump()):
+				var p = P.instance()
+				p.position = self.position
+				p.emitting = true
+				self.get_parent().add_child(p)
+				pg.already_jumped = true
+				$anim.play("jump")
+				$Sprite.frame = 5
+				velocity.y = pg.JUMP_POWER
+				on_ground = false
 			
 		if Input.is_action_just_released("restart"):
 			die(0)
