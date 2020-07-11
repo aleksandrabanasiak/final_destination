@@ -6,5 +6,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$HBoxContainer/Bars/Bar/Count/Background/Number.text = String(PlayerGlobals.health)
-#	pass
+	$HBoxContainer/Bars/Bar2/Health/Background/Number.text = String(PlayerGlobals.health)
+	$HBoxContainer/Bars/Bar2/staminaBar.value = PlayerGlobals.stamina
