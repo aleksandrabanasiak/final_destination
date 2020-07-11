@@ -51,9 +51,10 @@ func _physics_process(delta):
 			pg.on_ground = false
 
 		if is_on_wall() and sign(pg.velocity.y) == 1 and pg.stamina > 0:
+			print(pg.velocity)
 			pg.is_wall_sliding = true
 			pg.stamina -= 2
-			pg.velocity += pg.WALL_GRAVITY * delta
+			pg.velocity = pg.WALL_GRAVITY * delta
 		else:
 			pg.velocity += pg.GRAVITY * delta
 			
