@@ -24,9 +24,9 @@ func _physics_process(delta):
 		# Check for player input
 		if pg.current_state != pg.STATE.KNOCKBACK:
 			if Input.is_action_just_pressed("ui_up"):
-				if pg.is_wall_sliding and pg.stamina - pg.wall_jump_stamina_cost > 0:
+				if pg.is_wall_sliding and (pg.stamina - pg.wall_jump_stamina_cost) > 0 and !pg.already_jumped:
 					wall_jump()
-				elif pg.on_ground or can_double_jump():
+				elif !pg.is_wall_sliding and (pg.on_ground or can_double_jump()):
 					jump()
 			if Input.is_action_pressed("ui_right"):
 				go_right()
@@ -51,9 +51,10 @@ func _physics_process(delta):
 			pg.on_ground = false
 
 		if is_on_wall() and sign(pg.velocity.y) == 1 and pg.stamina > 0:
+			pg.already_jumped = false
 			pg.is_wall_sliding = true
 			pg.stamina -= 2
-			pg.velocity += pg.WALL_GRAVITY * delta
+			pg.velocity = pg.WALL_GRAVITY * delta
 		else:
 			pg.velocity += pg.GRAVITY * delta
 			

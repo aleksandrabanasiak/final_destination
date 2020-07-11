@@ -17,10 +17,10 @@ var on_ground: bool = false
 
 # Wall jump
 var is_wall_sliding: bool = false
-const WALL_GRAVITY: Vector2 = Vector2(0, 100)
+const WALL_GRAVITY: Vector2 = Vector2(0, 2400)
 const MAX_STAMINA: int = 60
 var stamina: int = 60
-var wall_jump_stamina_cost: int = 15
+var wall_jump_stamina_cost: int = 20
 
 # Sprites
 const player_sprite: StreamTexture = preload("res://Player/assets/player.png")
@@ -37,4 +37,4 @@ var already_jumped: bool = false
 func reload_player():
 	health = max_health
 	current_state = STATE.IDLE
-	double_jump_enabled = false
+	#double_jump_enabled = false
