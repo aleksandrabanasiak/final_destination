@@ -20,7 +20,7 @@ var is_wall_sliding: bool = false
 const WALL_GRAVITY: Vector2 = Vector2(0, 2400)
 const MAX_STAMINA: int = 60
 var stamina: int = 60
-var wall_jump_stamina_cost: int = 15
+var wall_jump_stamina_cost: int = 20
 
 # Sprites
 const player_sprite: StreamTexture = preload("res://Player/assets/player.png")
