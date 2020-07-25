@@ -159,6 +159,7 @@ limit_left = 0
 limit_right = 800
 limit_bottom = 180
 smoothing_enabled = true
+smoothing_speed = 15.0
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 1

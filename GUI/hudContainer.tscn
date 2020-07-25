@@ -26,7 +26,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 378.0
+margin_right = 320.0
 margin_bottom = 160.0
 
 [node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
