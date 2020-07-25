@@ -22,7 +22,7 @@ position = Vector2( 510.173, 73.1186 )
 position = Vector2( 143.085, 104.713 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_base_scale = Vector2( 0.5, 0.5 )
+scroll_base_scale = Vector2( 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1, 1 )
@@ -31,12 +31,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 168.126, 100.639 )
-scale = Vector2( 0.639017, 0.578355 )
+position = Vector2( 237.159, 62.7106 )
+scale = Vector2( 0.889363, 0.804936 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 239.464, 105.718 )
